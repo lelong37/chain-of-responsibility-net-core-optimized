@@ -20,7 +20,7 @@ namespace Chain.NetCore.Optimized
                 middleWare2a.Invoke(middlewareEventArgs);
             }
 
-            Successor?.MiddlewareHandler(this, e);
+            Next?.MiddlewareHandler(this, e);
         }
     }
 }

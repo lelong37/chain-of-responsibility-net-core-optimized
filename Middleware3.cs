@@ -7,7 +7,7 @@ namespace Chain.NetCore.Optimized
         public override void MiddlewareHandler(object sender, MiddlewareEventArgs e)
         {
             Console.WriteLine(this.ToString());
-            Successor?.MiddlewareHandler(this, e);
+            Next?.MiddlewareHandler(this, e);
         }
     }
 }

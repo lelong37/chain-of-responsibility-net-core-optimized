@@ -7,7 +7,7 @@ namespace Chain.NetCore.Optimized
         public EventHandler<MiddlewareEventArgs> EventHandler;
         public abstract void MiddlewareHandler(object sender, MiddlewareEventArgs e);
 
-        public Middleware Successor { get; set; }
+        public Middleware Next { get; set; }
 
         protected Middleware()
         {
@@ -21,17 +21,12 @@ namespace Chain.NetCore.Optimized
 
         public virtual void OnInvoke(MiddlewareEventArgs e)
         {
-            if (EventHandler != null)
-            {
-                EventHandler(this, e);
-            }
+            EventHandler?.Invoke(this, e);
         }
 
         public Middleware Use<TMiddleWare>() where TMiddleWare: Middleware, new ()
         {
-           var middleWare = new TMiddleWare();
-           Successor = middleWare;
-           return Successor;
+           return Next = new TMiddleWare();
         }
     }
 }
