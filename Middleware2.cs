@@ -11,8 +11,8 @@ namespace Chain.NetCore.Optimized
             var middleWare2a = new MiddleWare2a();
 
             middleWare2a
-                .Use(new MiddleWare2b())
-                .Use(new MiddleWare2c());
+                .Use<MiddleWare2b>()
+                .Use<MiddleWare2c>();
 
             foreach (int request in e.Requests)
             {

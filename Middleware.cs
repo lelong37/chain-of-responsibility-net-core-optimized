@@ -27,17 +27,11 @@ namespace Chain.NetCore.Optimized
             }
         }
 
-        public Middleware Use(Middleware middleware)
+        public Middleware Use<TMiddleWare>() where TMiddleWare: Middleware, new ()
         {
-            Successor = middleware;
-            return Successor;
+           var middleWare = new TMiddleWare();
+           Successor = middleWare;
+           return Successor;
         }
-
-        //public Middleware Use<TMiddleWare>() where TMiddleWare: Middleware, new ()
-        //{
-        //    var middleWare = new TMiddleWare();
-        //    Successor = middleWare;
-        //    return Successor;
-        //}
     }
 }
