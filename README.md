@@ -40,7 +40,8 @@ public class MiddleWare2 : Middleware
 
         foreach (int request in e.Requests)
         {
-            middleWare2a.Invoke(new MiddlewareEventArgs());
+            var middlewareEventArgs = new MiddlewareEventArgs(){ Request = request };
+            middleWare2a.Invoke(middlewareEventArgs);
         }
 
         Successor?.MiddlewareHandler(this, e);
@@ -49,7 +50,7 @@ public class MiddleWare2 : Middleware
 ```
 
 #### Chain of Responsibility Workflow in this Example
-```terminal
+```
 Chain.NetCore.Optimized.MiddleWare1
 Chain.NetCore.Optimized.MiddleWare2
 Chain.NetCore.Optimized.MiddleWare2a - Processing Request: 2
