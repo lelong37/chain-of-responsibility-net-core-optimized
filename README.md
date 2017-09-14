@@ -7,18 +7,26 @@ Examples how to implement Chain of Responsibility Pattern Optimized for .Net Cor
 Creating chain of responsibility
 
 ```csharp
-var middleWare1 = new MiddleWare1();
-
-middleWare1
-    .Use(new MiddleWare2())
-    .Use(new MiddleWare3());
-
-var middlewareEventArgs = new MiddlewareEventArgs()
+class Program
 {
-    Requests = new int[] { 2, 5, 14, 22, 18, 3, 27, 20 }
-};
+    static void Main(string[] args)
+    {
+        var middleWare1 = new MiddleWare1();
 
-middleWare1.Invoke(middlewareEventArgs);
+        middleWare1
+            .Use<MiddleWare2>()
+            .Use<MiddleWare3>()
+            .Use<MiddleWare4>()
+            .Use<MiddleWare5>();
+
+        var middlewareEventArgs = new MiddlewareEventArgs()
+        {
+            Requests = new [] { 2, 5, 14, 22, 18, 3, 27, 20 }
+        };
+
+        middleWare1.Invoke(middlewareEventArgs);
+    }
+}
 ```
 
 #### Middleware2.cs
@@ -35,8 +43,8 @@ public class MiddleWare2 : Middleware
         var middleWare2a = new MiddleWare2a();
 
         middleWare2a
-            .Use(new MiddleWare2b())
-            .Use(new MiddleWare2c());
+            .Use<MiddleWare2b>()
+            .Use<MiddleWare2c>();
 
         foreach (int request in e.Requests)
         {
@@ -78,5 +86,7 @@ Chain.NetCore.Optimized.MiddleWare2a - Processing Request: 20
 Chain.NetCore.Optimized.MiddleWare2b - Processing Request: 20
 Chain.NetCore.Optimized.MiddleWare2c - Processing Request: 20
 Chain.NetCore.Optimized.MiddleWare3
+Chain.NetCore.Optimized.MiddleWare4
+Chain.NetCore.Optimized.MiddleWare5
 ```
 
