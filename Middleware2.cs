@@ -16,7 +16,8 @@ namespace Chain.NetCore.Optimized
 
             foreach (int request in e.Requests)
             {
-                middleWare2a.Invoke(new MiddlewareEventArgs());
+                var middlewareEventArgs = new MiddlewareEventArgs(){ Request = request };
+                middleWare2a.Invoke(middlewareEventArgs);
             }
 
             Successor?.MiddlewareHandler(this, e);
