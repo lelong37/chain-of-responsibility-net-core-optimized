@@ -4,10 +4,9 @@ namespace Chain.NetCore.Optimized
 {
     public abstract class Middleware
     {
-        public EventHandler<MiddlewareEventArgs> EventHandler;
+        private EventHandler<MiddlewareEventArgs> EventHandler;
         public abstract void MiddlewareHandler(object sender, MiddlewareEventArgs e);
-
-        public Middleware Next { get; set; }
+        protected Middleware Next { get; set; }
 
         protected Middleware()
         {
@@ -21,6 +20,7 @@ namespace Chain.NetCore.Optimized
 
         public virtual void OnInvoke(MiddlewareEventArgs e)
         {
+            Console.WriteLine(this.ToString());
             EventHandler?.Invoke(this, e);
         }
 
