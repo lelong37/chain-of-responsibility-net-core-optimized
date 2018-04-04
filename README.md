@@ -1,4 +1,4 @@
-# Chain of Responsibility Pattern - .Net Core Optimized
+<img src="https://user-images.githubusercontent.com/4691404/38285238-ed284f68-3784-11e8-8ab6-d94d51745b9e.png" width="85" /><h1>Chain of Responsibility Pattern - .Net Core Optimized</h1>
 
 Examples how to implement Chain of Responsibility Pattern Optimized for .Net Core v2.x
 
