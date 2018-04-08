@@ -122,4 +122,4 @@ Chain.NetCore.Optimized.MiddleWare4
 Chain.NetCore.Optimized.MiddleWare5
 ```
 
-Thanks to rest of the team: [Tony Sneed](https://github.com/tonysneed) and [Larry Popiel](https://github.com/LawzPopiel).
+Thanks to rest of the team: [Tony Sneed](https://github.com/tonysneed) and [Larry Popiel](https://github.com/LawzPopiel). 
